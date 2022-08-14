@@ -2,7 +2,7 @@
   "name": "multiplication-tables",
   "version": "1.0.0",
   "description": "a game to review your multiplication tables while having fun",
-  "main": "index.js",
+  "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node app.js"
@@ -10,11 +10,6 @@
   "author": "matt",
   "license": "ISC",
   "dependencies": {
-    "bootstrap": "^5.2.0",
-    "ejs": "^3.1.8",
     "express": "^4.18.1"
-  },
-  "devDependencies": {
-    "nodemon": "^2.0.19"
   }
 }

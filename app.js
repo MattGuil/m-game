@@ -1,25 +1,29 @@
-// Imports
-const express = require('express');
-const app = express();
-const port = 3000;
+var express = require('express');
+var app = express();
+var router = express.Router();
 
-// Static files
-app.use(express.static('public'));
-app.use('/css', express.static(__dirname + '/node_modules/bootstrap/dist/css'));
+var path = __dirname + '/views/';
 
-// Set views
-app.set('views', './views');
-app.set('view engine', 'ejs');
+// Constants
+const PORT = 3000;
+const HOST = '0.0.0.0';
 
-app.get('', function(req, res) {
-    res.render('menu');
+router.use(function(req, res, next) {
+    console.log("/" + req.method);
+    next();
 });
 
-app.get('/game', function(req, res) {
-    res.render('game');
+router.get('/', function(req, res) {
+    res.sendFile(path + 'menu.html');
 });
 
-// Listen on port 3000
-app.listen(port, function() {
-    console.info(`Listening on port ${port}`);
+router.get('/game', function(req, res) {
+    res.sendFile(path + 'game.html');
+});
+
+app.use(express.static(path));
+app.use('/', router);
+
+app.listen(PORT, function() {
+    console.info(`Listening on port ${PORT}`);
 });
